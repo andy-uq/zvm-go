@@ -16,3 +16,5 @@ const fiveBits = BitSize(5)
 const fourBits = BitSize(4)
 const threeBits = BitSize(3)
 const twoBits = BitSize(2)
+
+type ByteAddress uint16
