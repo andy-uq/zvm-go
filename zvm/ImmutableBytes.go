@@ -1,4 +1,4 @@
-package main
+package zvm
 
 type ImmutableBytes struct {
 	bytes []uint8

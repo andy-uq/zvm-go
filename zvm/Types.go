@@ -1,4 +1,4 @@
-package main
+package zvm
 
 type BitNumber uint8
 type BitSize uint8

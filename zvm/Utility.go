@@ -1,4 +1,4 @@
-package main
+package zvm
 
 func FetchBits(word int, high BitNumber, length BitSize) int {
 	mask := ^(-1 << length)
