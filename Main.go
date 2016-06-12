@@ -10,8 +10,8 @@ func main() {
 	dat, _ := ioutil.ReadFile("minizork.z3")
 	story := zvm.StoryFromBytes(dat)
 	 	
-	zvm.DisplayAbbreviation(story, zvm.AbbreviationNumber(0))
-	zvm.DisplayAbbreviation(story, zvm.AbbreviationNumber(4))
+	addr := zvm.Zstring(0xb106)
+	zstring := zvm.ReadZstring(story, addr)
 
-	fmt.Println(story.Version())
+	fmt.Println(zstring)
 }
