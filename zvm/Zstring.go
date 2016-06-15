@@ -111,16 +111,15 @@ func processZchar(story Story, zchar zcharT, state stringState) (string, stringS
 			return "", alphabet2
 		}
 
+		if zchar == zcharT(6) && state == alphabet2 {
+			return "", stringState{mode: leading}
+		}
+
 		alphabet := alphabetTable[state.alphabet]
 		return alphabet[zchar], alphabet0
 	}
 
 	switch {
-	case zchar == zcharT(6) && state == alphabet2:
-		{
-			return "", stringState{mode: leading}
-		}
-
 	case state.mode == abbrev:
 		{
 			abbrv := uint8(state.abbreviation) + uint8(zchar)

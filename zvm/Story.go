@@ -60,10 +60,14 @@ func (story Story) writeWord(address WordAddress, value uint16) {
 	story.writeByte(address.Low(), low)
 }
 
-// Version of the story
-func (story Story) Version() byte {	
+func (story Story) Version() byte {
 	const version = ByteAddress(0)
 	return story.readByte(version)
+}
+
+func dictionaryBase(story Story) DictionaryBase {
+	const dictionaryBaseOffset = WordAddress(8)
+	return DictionaryBase(story.readWord(dictionaryBaseOffset))
 }
 
 func abbreviationTableBase(story Story) AbbreviationTableBase {
@@ -78,7 +82,7 @@ func firstAbbreviationAddress(base AbbreviationTableBase) WordAddress {
 func zstringFromAbbreviation(story Story, n AbbreviationNumber) Zstring {
 	const abbreviationTableLength = 96
 	if n > abbreviationTableLength {
-		panic ("bad offset into abbreviation table")
+		panic("bad offset into abbreviation table")
 	}
 
 	base := abbreviationTableBase(story)

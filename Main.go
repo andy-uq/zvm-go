@@ -2,16 +2,20 @@ package main
 
 import (
 	"fmt"
-	"zvm/zvm"	
 	"io/ioutil"
+
+	"zvm/zvm"
 )
 
 func main() {
 	dat, _ := ioutil.ReadFile("minizork.z3")
 	story := zvm.StoryFromBytes(dat)
-	 	
-	addr := zvm.Zstring(0xb106)
-	zstring := zvm.ReadZstring(story, addr)
 
-	fmt.Println(zstring)
+	var n zvm.DictionaryNumber
+	for count := zvm.GetEntryCount(story); count > 0; count-- {
+		e := zvm.GetDictionaryEntry(story, n)
+		fmt.Println(e)
+
+		n++
+	}
 }
