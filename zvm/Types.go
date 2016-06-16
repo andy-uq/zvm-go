@@ -36,3 +36,6 @@ type Zstring uint32
 
 type DictionaryBase uint16
 type DictionaryNumber uint8
+
+type ObjectBase uint16
+type ObjectNumber uint8

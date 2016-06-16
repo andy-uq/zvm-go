@@ -65,9 +65,18 @@ func (story Story) Version() byte {
 	return story.readByte(version)
 }
 
+func (story Story) v3OrLower() bool {
+	return story.Version() <= 3
+}
+
 func dictionaryBase(story Story) DictionaryBase {
 	const dictionaryBaseOffset = WordAddress(8)
 	return DictionaryBase(story.readWord(dictionaryBaseOffset))
+}
+
+func objectBase(story Story) ObjectBase {
+	const objectBaseOffset = WordAddress(10)
+	return ObjectBase(story.readWord(objectBaseOffset))
 }
 
 func abbreviationTableBase(story Story) AbbreviationTableBase {
